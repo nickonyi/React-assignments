@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+const people = [
+  {
+    id: 0,
+    name: "Creola Katherine Johnson",
+    profession: "mathematician",
+  },
+  {
+    id: 1,
+    name: "Mario José Molina-Pasquel Henríquez",
+    profession: "chemist",
+    accomplishment: "discovery of Arctic ozone hole",
+  },
+  {
+    id: 2,
+    name: "Mohammad Abdus Salam",
+    profession: "physicist",
+  },
+  {
+    name: "Percy Lavon Julian",
+    profession: "chemist",
+    accomplishment: "pioneering cortisone",
+  },
+  {
+    name: "Subrahmanyan Chandrasekhar",
+    profession: "astrophysicist",
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const listItems = people.map((person) => {
+    return <li> {person} </li>;
+  });
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+  const chemists = people.filter((person) => person.profession === "chemist");
+
+  const list = chemists.map((chemist) => {
+    return (
+      <li>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+          <b> {chemist.name}: </b> {" " + chemist.profession + " "}
+          known for {chemist.accomplishment}{" "}
+        </p>{" "}
+      </li>
+    );
+  });
+
+  return <ul> {list} </ul>;
 }
 
-export default App
+export default App;
